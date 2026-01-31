@@ -1,3 +1,6 @@
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
 type Execution = {
   id: string;
   workflow_id: string;
@@ -8,27 +11,30 @@ type Execution = {
   created_at: string;
 };
 
+const statusVariant: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
+  pending: "secondary",
+  running: "default",
+  completed: "outline",
+  failed: "destructive",
+};
+
 export default function ExecutionCard({ execution }: { execution: Execution }) {
+  const variant = statusVariant[execution.status] ?? "secondary";
   return (
-    <div
-      style={{
-        padding: '1rem 1.25rem',
-        background: 'var(--surface)',
-        border: '1px solid var(--border)',
-        borderRadius: 8,
-        marginBottom: '0.75rem',
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-        <span style={{ fontWeight: 600 }}>{execution.id}</span>
-        <span className={`status-${execution.status}`} style={{ fontSize: '0.85rem', textTransform: 'capitalize' }}>
+    <Card className="mb-4">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <span className="font-mono text-sm font-medium text-foreground">{execution.id}</span>
+        <Badge variant={variant} className="capitalize">
           {execution.status}
-        </span>
-      </div>
-      <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-        Step {execution.current_step} · Created {new Date(execution.created_at).toLocaleString()}
-        {execution.finished_at && ` · Finished ${new Date(execution.finished_at).toLocaleString()}`}
-      </div>
-    </div>
+        </Badge>
+      </CardHeader>
+      <CardContent className="pt-0">
+        <div className="text-sm text-muted-foreground">
+          Step {execution.current_step} · Created {new Date(execution.created_at).toLocaleString()}
+          {execution.finished_at &&
+            ` · Finished ${new Date(execution.finished_at).toLocaleString()}`}
+        </div>
+      </CardContent>
+    </Card>
   );
 }

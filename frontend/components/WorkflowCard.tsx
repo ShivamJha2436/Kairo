@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 type Workflow = {
   id: string;
@@ -9,22 +10,15 @@ type Workflow = {
 
 export default function WorkflowCard({ workflow }: { workflow: Workflow }) {
   return (
-    <Link
-      href={`/executions?workflow_id=${workflow.id}`}
-      style={{
-        display: 'block',
-        padding: '1rem 1.25rem',
-        background: 'var(--surface)',
-        border: '1px solid var(--border)',
-        borderRadius: 8,
-        color: 'inherit',
-        textDecoration: 'none',
-      }}
-    >
-      <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{workflow.name}</div>
-      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-        ID: {workflow.id}
-      </div>
+    <Link href={`/executions?workflow_id=${workflow.id}`} className="block transition-opacity hover:opacity-90">
+      <Card className="h-full transition-colors hover:border-primary/40">
+        <CardHeader className="pb-2">
+          <div className="font-semibold text-foreground">{workflow.name}</div>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <div className="text-xs text-muted-foreground font-mono">ID: {workflow.id}</div>
+        </CardContent>
+      </Card>
     </Link>
   );
 }

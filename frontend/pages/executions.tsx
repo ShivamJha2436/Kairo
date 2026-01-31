@@ -43,14 +43,14 @@ export default function ExecutionsPage() {
         subtitle={workflowId ? `Executions for workflow ${workflowId}` : 'Select a workflow to view executions'}
       />
       {!workflowId && (
-        <p style={{ color: 'var(--text-muted)' }}>
-          Open executions from a workflow on the <a href="/workflows">Workflows</a> page, or add <code>?workflow_id=:id</code> to the URL.
+        <p className="text-muted-foreground">
+          Open executions from a workflow on the <a href="/workflows" className="text-primary hover:underline">Workflows</a> page, or add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">?workflow_id=:id</code> to the URL.
         </p>
       )}
-      {workflowId && loading && <p style={{ color: 'var(--text-muted)' }}>Loading…</p>}
-      {workflowId && error && <p style={{ color: 'var(--error)' }}>Error: {error}</p>}
+      {workflowId && loading && <p className="text-muted-foreground">Loading…</p>}
+      {workflowId && error && <p className="text-destructive">Error: {error}</p>}
       {workflowId && !loading && !error && executions.length === 0 && (
-        <p style={{ color: 'var(--text-muted)' }}>No executions for this workflow yet.</p>
+        <p className="text-muted-foreground">No executions for this workflow yet.</p>
       )}
       {workflowId && !loading && !error && executions.length > 0 && (
         <div>

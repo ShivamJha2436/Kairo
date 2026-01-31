@@ -30,13 +30,13 @@ export default function WorkflowsPage() {
         title="Workflows"
         subtitle="All defined workflows (read-only)"
       />
-      {loading && <p style={{ color: 'var(--text-muted)' }}>Loading…</p>}
-      {error && <p style={{ color: 'var(--error)' }}>Error: {error}</p>}
+      {loading && <p className="text-muted-foreground">Loading…</p>}
+      {error && <p className="text-destructive">Error: {error}</p>}
       {!loading && !error && workflows.length === 0 && (
-        <p style={{ color: 'var(--text-muted)' }}>No workflows yet. Add them via the database or API.</p>
+        <p className="text-muted-foreground">No workflows yet. Add them via the database or API.</p>
       )}
       {!loading && !error && workflows.length > 0 && (
-        <div style={{ display: 'grid', gap: '0.75rem', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {workflows.map((w) => (
             <WorkflowCard key={w.id} workflow={w} />
           ))}
