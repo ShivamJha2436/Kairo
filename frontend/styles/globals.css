@@ -1,0 +1,45 @@
+:root {
+  --bg: #0f0f12;
+  --surface: #18181c;
+  --border: #2a2a30;
+  --text: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --accent: #3b82f6;
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.status-pending { color: var(--text-muted); }
+.status-running { color: var(--accent); }
+.status-completed { color: var(--success); }
+.status-failed { color: var(--error); }
