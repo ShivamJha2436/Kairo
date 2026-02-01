@@ -27,7 +27,6 @@ export function LandingNav({ className }: { className?: string }) {
           href="/"
           className="flex items-center gap-2 font-semibold text-foreground no-underline hover:text-foreground"
         >
-          <span className="text-xl">🐉</span>
           <span>Kairo</span>
         </Link>
         <nav className="flex items-center gap-2">
