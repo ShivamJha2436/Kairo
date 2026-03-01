@@ -18,6 +18,9 @@ Each step can be an HTTP call or a custom action, and Kairo ensures:
 Think of Kairo as a **reliable to-do list for automated processes** — every step is tracked, logged, and executed predictably.
 
 ---
+## Architecture
+<img width="1217" height="908" alt="image" src="https://github.com/user-attachments/assets/c13e2db3-5d9c-472e-b519-a4f5e4de2e8f" />
+
 
 ## Problem Kairo Solves
 
